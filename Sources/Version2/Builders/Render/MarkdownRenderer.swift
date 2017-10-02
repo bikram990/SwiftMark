@@ -27,5 +27,5 @@ public protocol MarkdownRenderer {
     ///
     /// - Parameter string: The String to tokenize.
     /// - Returns: The Tokens that represent the String passed in.
-    func tokenize( string: String) -> [Token]
+    func tokenize(_ string: String) -> [Token]
 }
