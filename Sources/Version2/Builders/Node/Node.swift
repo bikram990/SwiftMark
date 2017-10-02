@@ -27,5 +27,5 @@ public protocol Node {
     var renderer: Renderer.Type { get }
     
     /// The data for the Node.
-    var value: TokenValue { get }
+    var value: NodeValue { get }
 }
