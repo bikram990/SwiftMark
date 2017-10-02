@@ -27,23 +27,23 @@ public protocol MarkdownRenderer {
     ///
     /// - Parameter string: The String to tokenize.
     /// - Returns: The Tokens that represent the String passed in.
-    func tokenize(_ string: String) -> [Token]
+    func tokenize(_ string: String)throws -> [Token]
     
     /// Parses an array of Tokens to an AST (made up of Nodes).
     ///
     /// - Parameter tokens: The Tokens to parse.
     /// - Returns: An AST with the data from the Tokens passed in.
-    func parse(_ tokens: [Token]) -> [Node]
+    func parse(_ tokens: [Token])throws -> [Node]
     
     /// Renders an AST into HTML.
     ///
     /// - Parameter nodes: The AST (made of an array of Nodes) to render.
     /// - Returns: The HTML with the data conatined in the AST.
-    func render(_ nodes: [Node]) -> String
+    func render(_ nodes: [Node])throws -> String
     
     /// Renders a block of Markdown to HTML.
     ///
     /// - Parameter string: The Markdown to render.
     /// - Returns: HTML that is the equivalent of the Markdown passed in.
-    func render(_ string: String) -> String
+    func render(_ string: String)throws -> String
 }
