@@ -23,4 +23,9 @@
 /// A renderer for converting a Node into an HTML element.
 public protocol NodeRenderer {
     
+    /// Converts a Node to an HTML element.
+    ///
+    /// - Parameter node: The Node to render.
+    /// - Returns: The HTML that 
+    func render(_ node: Node) -> String
 }
