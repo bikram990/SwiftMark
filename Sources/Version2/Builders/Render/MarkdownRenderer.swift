@@ -23,4 +23,9 @@
 /// A Markdown to HTML renderer.
 public protocol MarkdownRenderer {
     
+    /// Lexes a String to the corosponding Tokens.
+    ///
+    /// - Parameter string: The String to tokenize.
+    /// - Returns: The Tokens that represent the String passed in.
+    func tokenize( string: String) -> [Token]
 }
