@@ -23,4 +23,6 @@
 /// A simple String to Token converter.
 public protocol TokenGenerator {
     
+    /// The regular expression pattern used to see if a substring should be passed into the tokenizer method.
+    var regex: RegEx { get }
 }
