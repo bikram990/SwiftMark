@@ -28,4 +28,10 @@ public protocol MarkdownRenderer {
     /// - Parameter string: The String to tokenize.
     /// - Returns: The Tokens that represent the String passed in.
     func tokenize(_ string: String) -> [Token]
+    
+    /// Parses an array of Tokens to an AST (made up of Nodes).
+    ///
+    /// - Parameter tokens: The Tokens to parse.
+    /// - Returns: An AST with the data from the Tokens passed in.
+    func parse(_ tokens: [Token]) -> [Node]
 }
