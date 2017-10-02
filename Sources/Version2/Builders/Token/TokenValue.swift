@@ -21,11 +21,17 @@
 //SOFTWARE.
 
 /// A token containing the data for an HTML element that was taken from Markdown.
-public protocol Token {
+public indirect enum TokenValue {
     
-    /// The renderer used to parse the value.
-    var renderer: Renderer { get }
+    /// The token's data stored as a String.
+    case string(String)
     
-    /// The data for the Token.
-    var value: TokenValue { get }
+    /// The token's data stored as another Token.
+    case token(Token)
+    
+    /// The token's data stored as an array of Tokens.
+    case array([Token])
+    
+    /// The token's data stored as a dictionary (String -> Token).
+    case object([String: Token])
 }
