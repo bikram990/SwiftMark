@@ -66,7 +66,7 @@ open class Markdown: MarkdownRenderer {
             
             if !matched {
                 let index = input.characters.index(input.startIndex, offsetBy: 1)
-                tokens.append(.string(input.substring(to: index)))
+                // TODO: - Add a Text token with the character that was fetched.
                 input = input.substring(from: index)
             }
         }
