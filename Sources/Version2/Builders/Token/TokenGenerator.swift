@@ -25,4 +25,10 @@ public protocol TokenGenerator {
     
     /// The regular expression pattern used to see if a substring should be passed into the tokenizer method.
     var regex: RegEx { get }
+    
+    /// Converts a String to a Token.
+    ///
+    /// - Parameter string: The String that will be tokenized.
+    /// - Returns: A Token containing the data from the String passed in.
+    func tokenize(_ string: String) -> Token
 }
