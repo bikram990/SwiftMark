@@ -20,29 +20,54 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
+/// An implimented Markdown to HTML renderer.
 open class Markdown: MarkdownRenderer {
+    
+    /// The renderers used to convert the Markdown to HTML.
     private var renderers: [Renderer.Type] = []
     
+    /// Makes a renderer available to an instance of `Markdown` when rendering Markdown.
+    ///
+    /// - Parameter renderer: The renderer to expose to `Markdown`.
     public func addRenderer(_ renderer: Renderer.Type) {
         renderers.append(renderer)
     }
     
+    /// Exposes multiple renderers to an intance to `Markdown`.
+    ///
+    /// - Parameter renderers: The renderers to expose.
     public func addRenderers(_ renderers: [Renderer.Type]) {
         self.renderers.append(contentsOf: renderers)
     }
     
+    /// Lexes a String to an array of Tokens.
+    ///
+    /// - Parameter string: The String to tokenize.
+    /// - Returns: The Tokens containing the data for the HTML
     public func tokenize(_ string: String) -> [Token] {
         return []
     }
     
+    /// Parses an array of Tokens into an AST (made up of Nodes).
+    ///
+    /// - Parameter tokens: The Tokens to parse.
+    /// - Returns: An AST containing the data held in the Tokens passed in.
     public func parse(_ tokens: [Token]) -> [Node] {
         return []
     }
     
+    /// Renders HTML from an AST (array of Nodes).
+    ///
+    /// - Parameter nodes: The Nodes to render.
+    /// - Returns: The HTML with the data from the Nodes passed in.
     public func render(_ nodes: [Node]) -> String {
         return ""
     }
     
+    /// Renders a block of Markdown to HTML.
+    ///
+    /// - Parameter string: The Markdown to render.
+    /// - Returns: The HTML equivalent of the Markdown passed in.
     public func render(_ string: String) -> String {
         return ""
     }
