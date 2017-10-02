@@ -28,4 +28,7 @@ public indirect enum Node {
     
     /// For data that is stored as another Node.
     case node(Node)
+    
+    /// For data that is stored as array of Nodes.
+    case array([Node])
 }
