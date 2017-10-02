@@ -23,4 +23,6 @@
 /// A node in an AST that contains the data for rendering HTML.
 public enum Node {
     
+    /// For data that is stored as a String.
+    case string(String)
 }
