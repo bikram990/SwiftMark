@@ -94,7 +94,9 @@ open class Markdown: MarkdownRenderer {
     ///
     /// - Parameter string: The Markdown to render.
     /// - Returns: The HTML equivalent of the Markdown passed in.
-    public func render(_ string: String) -> String {
-        return ""
+    public func render(_ string: String)throws -> String {
+        let tokens = try tokenize(string)
+        let nodes = parse(tokens)
+        return render(nodes)
     }
 }
