@@ -87,7 +87,7 @@ open class Markdown: MarkdownRenderer {
     /// - Parameter nodes: The Nodes to render.
     /// - Returns: The HTML with the data from the Nodes passed in.
     public func render(_ nodes: [Node]) -> String {
-        return ""
+        return nodes.map({ node in node.renderer.render(node) }).joined()
     }
     
     /// Renders a block of Markdown to HTML.
