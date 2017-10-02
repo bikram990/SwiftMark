@@ -44,8 +44,34 @@ open class Markdown: MarkdownRenderer {
     ///
     /// - Parameter string: The String to tokenize.
     /// - Returns: The Tokens containing the data for the HTML
-    public func tokenize(_ string: String) -> [Token] {
-        return []
+    public func tokenize(_ string: String)throws -> [Token] {
+        var tokens: [Token] = []
+        var input: String = string
+        
+        while input.count > 0 {
+            var matched = false
+            
+            for rendererType in self.renderers {
+                let renderer = rendererType.init(renderer: self)
+                
+                if let match = try input.match(regex: renderer.regex, with: renderer.templates) {
+                    let token = renderer.tokenize(match.0.joined(separator: "::"))
+                    tokens.append(token)
+                    
+                    input = input.substring(from: input.characters.index(input.startIndex, offsetBy: match.1.characters.count))
+                    matched = true
+                    break
+                }
+            }
+            
+            if !matched {
+                let index = input.characters.index(input.startIndex, offsetBy: 1)
+                tokens.append(.string(input.substring(to: index)))
+                input = input.substring(from: index)
+            }
+        }
+        
+        return tokens
     }
     
     /// Parses an array of Tokens into an AST (made up of Nodes).
