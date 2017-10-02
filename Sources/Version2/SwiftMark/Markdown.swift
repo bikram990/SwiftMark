@@ -23,6 +23,10 @@
 open class Markdown: MarkdownRenderer {
     private var renderers: [Renderer.Type] = []
     
+    public func addRenderer(_ renderer: Renderer.Type) {
+        renderers.append(renderer)
+    }
+    
     public func tokenize(_ string: String) -> [Token] {
         return []
     }
