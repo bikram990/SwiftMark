@@ -40,4 +40,10 @@ public protocol MarkdownRenderer {
     /// - Parameter nodes: The AST (made of an array of Nodes) to render.
     /// - Returns: The HTML with the data conatined in the AST.
     func render(_ nodes: [Node]) -> String
+    
+    /// Renders a block of Markdown to HTML.
+    ///
+    /// - Parameter string: The Markdown to render.
+    /// - Returns: HTML that is the equivalent of the Markdown passed in.
+    func render(_ string: String) -> String
 }
