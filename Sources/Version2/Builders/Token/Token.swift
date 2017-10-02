@@ -24,7 +24,7 @@
 public protocol Token {
     
     /// The renderer used to parse the value.
-    var renderer: Renderer { get }
+    var renderer: Renderer.Type { get }
     
     /// The data for the Token.
     var value: TokenValue { get }
