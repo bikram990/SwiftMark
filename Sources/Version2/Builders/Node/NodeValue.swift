@@ -21,11 +21,17 @@
 //SOFTWARE.
 
 /// A node in an AST that contains the data for rendering HTML.
-public protocol Node {
+public indirect enum NodeValue {
     
-    /// The renderer used to render the value.
-    var renderer: Renderer { get }
+    /// For data that is stored as a String.
+    case string(String)
     
-    /// The data for the Node.
-    var value: TokenValue { get }
+    /// For data that is stored as another Node.
+    case node(Node)
+    
+    /// For data that is stored as array of Nodes.
+    case array([Node])
+    
+    /// For data that is stored as a dictionary of Nodes with Strings as the keys.
+    case object([String: Node])
 }
