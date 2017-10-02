@@ -21,6 +21,8 @@
 //SOFTWARE.
 
 open class Markdown: MarkdownRenderer {
+    private var renderers: [Renderer.Type] = []
+    
     public func tokenize(_ string: String) -> [Token] {
         return []
     }
