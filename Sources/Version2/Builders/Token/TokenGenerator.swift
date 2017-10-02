@@ -26,6 +26,9 @@ public protocol TokenGenerator {
     /// The regular expression pattern used to see if a substring should be passed into the tokenizer method.
     var regex: RegEx { get }
     
+    /// The template strings that should be fetched from the regex match.
+    var templates: [String] { get }
+    
     /// Converts a String to a Token.
     ///
     /// - Parameter string: The String that will be tokenized.
