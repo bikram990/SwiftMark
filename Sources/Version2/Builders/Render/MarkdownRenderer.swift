@@ -34,4 +34,10 @@ public protocol MarkdownRenderer {
     /// - Parameter tokens: The Tokens to parse.
     /// - Returns: An AST with the data from the Tokens passed in.
     func parse(_ tokens: [Token]) -> [Node]
+    
+    /// Renders an AST into HTML.
+    ///
+    /// - Parameter nodes: The AST (made of an array of Nodes) to render.
+    /// - Returns: The HTML with the data conatined in the AST.
+    func render(_ nodes: [Node]) -> String
 }
