@@ -31,4 +31,7 @@ public indirect enum Node {
     
     /// For data that is stored as array of Nodes.
     case array([Node])
+    
+    /// For data that is stored as a dictionary of Nodes with Strings as the keys.
+    case object([String: Node])
 }
