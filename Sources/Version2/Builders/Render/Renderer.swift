@@ -26,4 +26,9 @@ public protocol Renderer: TokenGenerator, NodeGenerator, NodeRenderer {
     
     /// The `MarkdownRenderer` that is using the Renderer.
     var renderer: MarkdownRenderer { get }
+    
+    /// An initializer that allows a Renderer to be created from a `MarkdownRenderer`.
+    ///
+    /// - Parameter renderer: The `MarkdownRenderer` that is using the Renderer.
+    init(renderer: MarkdownRenderer)
 }
