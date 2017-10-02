@@ -23,4 +23,9 @@
 /// A simple Token to Node converter.
 public protocol NodeGenerator {
     
+    /// Converts a Token to a Node.
+    ///
+    /// - Parameter token: The Token to parse.
+    /// - Returns: A Node containing the data from the Token.
+    func parse(_ token: Token) -> Node
 }
