@@ -79,7 +79,7 @@ open class Markdown: MarkdownRenderer {
     /// - Parameter tokens: The Tokens to parse.
     /// - Returns: An AST containing the data held in the Tokens passed in.
     public func parse(_ tokens: [Token]) -> [Node] {
-        return []
+        return tokens.map { token in token.renderer.parse(token)}
     }
     
     /// Renders HTML from an AST (array of Nodes).
