@@ -35,9 +35,11 @@ public extension String {
     /// - Parameters:
     ///   - regex: The regular expression pattern that the start of the string must match.
     ///   - templates: The templates strings that will be returned with the full match.
-    /// - Returns: An optional tuple containing a String array and a String:
-    ///            0. An array of all the template Strings that where requested.
-    ///            1. The full match if it was found.
+    /// - Returns:
+    ///   An optional tuple containing a String array and a String:
+    ///
+    ///   0. An array of all the template Strings that where requested.
+    ///   1. The full match if it was found.
     /// - Throws: Any errors when creating the `NSRegularExpression` with the pattern passed in.
     public func match(regex: String, with templates: [String])throws -> ([String], String)? {
         let expression: NSRegularExpression
