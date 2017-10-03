@@ -95,6 +95,7 @@ open class Markdown: MarkdownRenderer {
     /// - Parameter string: The Markdown to render.
     /// - Returns: The HTML equivalent of the Markdown passed in.
     public func render(_ string: String)throws -> String {
+        self.renderers.insert(Escape.self, at: 0)
         self.addRenderers([
                 Text.self
             ])
