@@ -33,5 +33,5 @@ public protocol TokenGenerator {
     ///
     /// - Parameter strings: The Strings for the templates that are in the regex match.
     /// - Returns: A Token containing the data from the String passed in.
-    func tokenize(_ strings: [String]) -> Token
+    func tokenize(_ strings: [String])throws -> Token
 }

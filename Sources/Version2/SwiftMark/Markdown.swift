@@ -55,7 +55,7 @@ open class Markdown: MarkdownRenderer {
                 let renderer = rendererType.init(renderer: self)
                 
                 if let match = try input.match(regex: renderer.regex, with: renderer.templates) {
-                    let token = renderer.tokenize(match.0)
+                    let token = try renderer.tokenize(match.0)
                     tokens.append(token)
                     
                     input = input.substring(from: input.characters.index(input.startIndex, offsetBy: match.1.characters.count))
