@@ -1,5 +1,6 @@
 import XCTest
 @testable import SwiftMarkTests
+@testable import Version2Tests
 
 XCTMain([
      testCase(SwiftMarkTests.allTests),
