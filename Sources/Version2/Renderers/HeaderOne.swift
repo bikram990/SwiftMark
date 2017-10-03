@@ -44,7 +44,7 @@ public class HeaderOne: Renderer {
     
     public func render(_ node: Node) -> String {
         guard case let NodeValue.array(nodes) = node.value else {
-            fatalError("[SwiftMark] - Getting token value from HeaderOnNode")
+            fatalError("[SwiftMark] - Getting token value from HeaderOneNode")
         }
         let internalHTML = self.renderer.render(nodes)
         return "<h1>\(internalHTML)</h1>"
