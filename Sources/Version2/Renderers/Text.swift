@@ -29,8 +29,8 @@ public class Text: Renderer {
         self.renderer = renderer
     }
     
-    public func tokenize(_ string: String) -> Token {
-        return TextToken(value: string)
+    public func tokenize(_ strings: [String]) -> Token {
+        return TextToken(value: strings[0])
     }
     
     public func parse(_ token: Token) -> Node {
