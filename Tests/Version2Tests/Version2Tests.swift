@@ -34,10 +34,34 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testHeaderOne() {
+        let md = """
+        \\# Hello World!
+        # Header 1
+
+        Header Goes Here
+        ===
+
+        \\## Header One with Hash
+        """
+        
+        let html = """
+        # Hello World!
+        <h1>Header 1</h1>
+
+        <h1>Header Goes Here</h1>
+
+        #<h1>Header One with Hash</h1>
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
-            ("testEscape", testEscape)
+            ("testEscape", testEscape),
+            ("testHeaderOne", testHeaderOne)
         ]
     }
 }
