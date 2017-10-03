@@ -97,6 +97,7 @@ open class Markdown: MarkdownRenderer {
     public func render(_ string: String)throws -> String {
         self.renderers.insert(Escape.self, at: 0)
         self.addRenderers([
+                HeaderOne.self,
                 Text.self
             ])
         
