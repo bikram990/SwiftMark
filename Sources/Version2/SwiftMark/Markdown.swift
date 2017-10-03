@@ -98,6 +98,7 @@ open class Markdown: MarkdownRenderer {
         self.renderers.insert(Escape.self, at: 0)
         self.addRenderers([
                 HeaderOne.self,
+                HeaderTwo.self,
                 Text.self
             ])
         
