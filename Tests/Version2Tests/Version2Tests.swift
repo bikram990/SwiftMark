@@ -41,7 +41,8 @@ class Version2Tests: XCTestCase {
 
         Header Goes Here
         ===
-
+        
+        # Header Again #
         \\## Header One with Hash
         """
         
@@ -51,6 +52,7 @@ class Version2Tests: XCTestCase {
 
         <h1>Header Goes Here</h1>
 
+        <h1>Header Again</h1>
         #<h1>Header One with Hash</h1>
         """
         
@@ -62,6 +64,8 @@ class Version2Tests: XCTestCase {
         \\#\\# Hello World!
         ## Header 2
 
+        ## Broken # header
+
         Header Goes Here
         ---
 
@@ -72,6 +76,8 @@ class Version2Tests: XCTestCase {
         let html = """
         ## Hello World!
         <h2>Header 2</h2>
+
+        <h2>Broken # header</h2>
 
         <h2>Header Goes Here</h2>
 
