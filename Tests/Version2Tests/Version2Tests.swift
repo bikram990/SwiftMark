@@ -18,9 +18,26 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testEscape() {
+        let md = """
+        \\# Hello World!
+        This is just text for know
+        \\- Caleb Kleveter
+        """
+        
+        let html = """
+        # Hello World!
+        This is just text for know
+        - Caleb Kleveter
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
-            ("testText", testText)
+            ("testText", testText),
+            ("testEscape", testEscape)
         ]
     }
 }
