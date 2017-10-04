@@ -52,6 +52,7 @@ open class Markdown: MarkdownRenderer {
         self.addRenderers([
             HeaderOne.self,
             HeaderTwo.self,
+            HeaderThree.self,
             Text.self
         ])
         
