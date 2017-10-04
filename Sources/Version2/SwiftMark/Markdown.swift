@@ -48,6 +48,13 @@ open class Markdown: MarkdownRenderer {
     /// - Parameter string: The String to tokenize.
     /// - Returns: The Tokens containing the data for the HTML
     public func tokenize(_ string: String)throws -> [Token] {
+        self.renderers.insert(Escape.self, at: 0)
+        self.addRenderers([
+            HeaderOne.self,
+            HeaderTwo.self,
+            Text.self
+        ])
+        
         var tokens: [Token] = []
         var input: String = string
         
@@ -102,13 +109,6 @@ open class Markdown: MarkdownRenderer {
     /// - Parameter string: The Markdown to render.
     /// - Returns: The HTML equivalent of the Markdown passed in.
     public func render(_ string: String)throws -> String {
-        self.renderers.insert(Escape.self, at: 0)
-        self.addRenderers([
-                HeaderOne.self,
-                HeaderTwo.self,
-                Text.self
-            ])
-        
         let tokens = try tokenize(string)
         let nodes = parse(tokens)
         return render(nodes)
