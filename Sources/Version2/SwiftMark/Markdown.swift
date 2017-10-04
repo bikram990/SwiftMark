@@ -23,6 +23,9 @@
 /// An implimented Markdown to HTML renderer.
 open class Markdown: MarkdownRenderer {
     
+    /// Tags for elements that will not be rendered.
+    public var disallowedTags: [String]?
+    
     /// The renderers used to convert the Markdown to HTML.
     private var renderers: [Renderer.Type] = []
     

@@ -23,6 +23,9 @@
 /// A Markdown to HTML renderer.
 public protocol MarkdownRenderer {
     
+    /// Tags for elements that will not be rendered.
+    var disallowedTags: [String]? { get set }
+    
     /// Lexes a String to the corosponding Tokens.
     ///
     /// - Parameter string: The String to tokenize.
