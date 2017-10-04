@@ -23,7 +23,9 @@
 public class HeaderOne: Renderer {
     public var regex: RegEx = "(#\\s+(.+?)(?m:([[:blank:]]#*[[:blank:]]*$|$))|(.+)\\n\\=+)"
     public var templates: [String] = ["$2", "$4"]
-    public var renderer: MarkdownRenderer
+    public var type: String = "header"
+    public var disallowedTags: [String] = ["header", "quote", "image", "hr"]
+    public var renderer: MarkdownRenderer = Markdown()
     
     public required init(renderer: MarkdownRenderer) {
         self.renderer = renderer

@@ -23,7 +23,9 @@
 public class Text: Renderer {
     public var regex: RegEx = "[^\\s]+"
     public var templates: [String] = ["$0"]
-    public var renderer: MarkdownRenderer
+    public var type: String = "raw"
+    public var disallowedTags: [String] = []
+    public var renderer: MarkdownRenderer = Markdown()
     
     public required init(renderer: MarkdownRenderer) {
         self.renderer = renderer

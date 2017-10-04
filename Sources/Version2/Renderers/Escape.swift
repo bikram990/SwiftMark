@@ -23,7 +23,9 @@
 public class Escape: Renderer {
     public var regex: RegEx = "\\\\(.)"
     public var templates: [String] = ["$1"]
-    public var renderer: MarkdownRenderer
+    public var type: String = "raw"
+    public var disallowedTags: [String] = []
+    public var renderer: MarkdownRenderer = Markdown()
     
     public required init(renderer: MarkdownRenderer) {
         self.renderer = renderer
