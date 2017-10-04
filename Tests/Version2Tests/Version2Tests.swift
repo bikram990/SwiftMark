@@ -20,12 +20,16 @@ class Version2Tests: XCTestCase {
     
     func testEscape() {
         let md = """
+        \\### Header Two with Hash
+
         \\# Hello World!
         This is just text for know
         \\- Caleb Kleveter
         """
         
         let html = """
+        ### Header Two with Hash
+
         # Hello World!
         This is just text for know
         - Caleb Kleveter
@@ -45,7 +49,6 @@ class Version2Tests: XCTestCase {
         # Hashes ### HASHES ## everywhere ##
 
         # Header Again #
-        \\## Header One with Hash
         """
         
         let html = """
@@ -57,7 +60,6 @@ class Version2Tests: XCTestCase {
         <h1>Hashes ### HASHES ## everywhere</h1>
 
         <h1>Header Again</h1>
-        #<h1>Header One with Hash</h1>
         """
         
         XCTAssertEqual(try markdown.render(md), html)
@@ -73,7 +75,6 @@ class Version2Tests: XCTestCase {
         Header Goes Here
         ---
 
-        \\### Header Two with Hash
         ## \\# Header Hash with Two
         """
         
@@ -85,7 +86,6 @@ class Version2Tests: XCTestCase {
 
         <h2>Header Goes Here</h2>
 
-        #<h2>Header Two with Hash</h2>
         <h2># Header Hash with Two</h2>
         """
         
