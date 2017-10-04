@@ -55,7 +55,11 @@ open class Markdown: MarkdownRenderer {
             var matched = false
             
             for rendererType in self.renderers {
-                let renderer = rendererType.init(renderer: self)
+                let renderer = rendererType.init()
+                
+                if let tags = disallowedTags {
+                    if tags.contains(renderer.type) { continue }
+                }
                 
                 if let match = try input.match(regex: renderer.regex, with: renderer.templates) {
                     let token = try renderer.tokenize(match.0)
