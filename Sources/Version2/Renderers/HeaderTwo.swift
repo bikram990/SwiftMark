@@ -27,8 +27,8 @@ public class HeaderTwo: Renderer {
     public var disallowedTags: [String] = ["header", "quote", "image", "hr"]
     public var renderer: MarkdownRenderer = Markdown()
     
-    public required init(renderer: MarkdownRenderer) {
-        self.renderer = renderer
+    public required init() {
+        renderer.disallowedTags = disallowedTags
     }
     
     public func tokenize(_ strings: [String])throws -> Token {
