@@ -24,6 +24,12 @@
 /// This covers the rendering of a single type of Markdown element to HTML (i.e. blockquote, h1, italic, etc.).
 public protocol Renderer: TokenGenerator, NodeGenerator, NodeRenderer {
     
+    /// The type of markdown element that the renderer handles (i.e. header, image, quote, etc.)
+    var type: String { get }
+    
+    /// Tags for elements that will not be sub-rendered.
+    var disallowedTags: [String] { get }
+    
     /// The `MarkdownRenderer` that is using the Renderer.
     var renderer: MarkdownRenderer { get }
     
