@@ -21,8 +21,8 @@
 //SOFTWARE.
 
 public class Escape: Renderer {
-    public var regex: RegEx = "\\\\(.)"
-    public var templates: [String] = ["$1"]
+    public var regex: RegEx = "(\\\\([^#])|\\\\(#+))"
+    public var templates: [String] = ["$2", "$3"]
     public var type: String = "raw"
     public var disallowedTags: [String] = []
     public var renderer: MarkdownRenderer = Markdown()
