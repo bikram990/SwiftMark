@@ -42,6 +42,8 @@ class Version2Tests: XCTestCase {
         Header Goes Here
         ===
         
+        # Hashes ### HASHES ## everywhere ##
+
         # Header Again #
         \\## Header One with Hash
         """
@@ -51,6 +53,8 @@ class Version2Tests: XCTestCase {
         <h1>Header 1</h1>
 
         <h1>Header Goes Here</h1>
+
+        <h1>Hashes ### HASHES ## everywhere</h1>
 
         <h1>Header Again</h1>
         #<h1>Header One with Hash</h1>
