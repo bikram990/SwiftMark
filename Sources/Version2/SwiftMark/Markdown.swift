@@ -62,6 +62,7 @@ open class Markdown: MarkdownRenderer {
             Image.self,
             Blockquote.self,
             OrderedList.self,
+            UnorderedList.self,
             Text.self
         ])
         
