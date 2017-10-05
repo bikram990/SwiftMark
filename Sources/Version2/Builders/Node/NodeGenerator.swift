@@ -27,5 +27,5 @@ public protocol NodeGenerator {
     ///
     /// - Parameter token: The Token to parse.
     /// - Returns: A Node containing the data from the Token.
-    func parse(_ token: Token) -> Node
+    func parse(_ token: Token)throws -> Node
 }
