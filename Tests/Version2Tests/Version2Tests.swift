@@ -390,7 +390,8 @@ class Version2Tests: XCTestCase {
             ("testImage", testImage),
             ("testBlockquote", testBlockquote),
             ("testOrderedList", testOrderedList),
-            ("testUnorderedList", testUnorderedList)
+            ("testUnorderedList", testUnorderedList),
+            ("testSpaceCodeBlock", testSpaceCodeBlock)
         ]
     }
 }
