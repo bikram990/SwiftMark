@@ -65,6 +65,7 @@ open class Markdown: MarkdownRenderer {
             UnorderedList.self,
             BacktickCodeBlock.self,
             SpaceCodeBlock.self,
+            HorizontalRule.self,
             Text.self
         ])
         
