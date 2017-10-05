@@ -27,5 +27,5 @@ public protocol NodeRenderer {
     ///
     /// - Parameter node: The Node to render.
     /// - Returns: The HTML that 
-    func render(_ node: Node) -> String
+    func render(_ node: Node)throws -> String
 }
