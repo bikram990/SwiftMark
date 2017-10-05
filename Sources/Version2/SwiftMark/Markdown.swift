@@ -53,6 +53,7 @@ open class Markdown: MarkdownRenderer {
             HeaderOne.self,
             HeaderTwo.self,
             HeaderThree.self,
+            HeaderFour.self,
             Text.self
         ])
         
