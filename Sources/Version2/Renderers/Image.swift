@@ -33,7 +33,7 @@ public class Image: Renderer {
         let text = Text().tokenize([strings[0]])
         let url = Text().tokenize([strings[1]])
         let value = [text, url]
-        return LinkToken(value: value)
+        return ImageToken(value: value)
     }
     
     public func parse(_ token: Token)throws -> Node {
