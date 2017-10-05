@@ -308,6 +308,28 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testUnorderedList() {
+        let md = """
+        + Bananas
+        - Oranges
+        * Beer
+        + Kombucha
+        + Constitution Question
+        * Coffee
+        """
+        
+        let html = """
+        <ul><li>Bananas</li>
+        <li>Oranges</li>
+        <li>Beer</li>
+        <li>Kombucha</li>
+        <li>Constitution Question</li>
+        <li>Coffee</li></ul>
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
@@ -323,7 +345,8 @@ class Version2Tests: XCTestCase {
             ("testLink", testLink),
             ("testImage", testImage),
             ("testBlockquote", testBlockquote),
-            ("testOrderedList", testOrderedList)
+            ("testOrderedList", testOrderedList),
+            ("testUnorderedList", testUnorderedList)
         ]
     }
 }
