@@ -49,7 +49,7 @@ public class HeaderSix: Renderer {
             throw HeaderSixRenderingError.nodeRender
         }
         let internalHTML = try self.renderer.render(nodes)
-        return "<h5>\(internalHTML)</h5>"
+        return "<h6>\(internalHTML)</h6>"
     }
     
     
