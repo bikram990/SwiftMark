@@ -240,6 +240,22 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testImage() {
+        let md = """
+        ![Hello Stranger](https://i.stack.imgur.com/rX0tx.jpg?s=48&g=1)
+        ![Styled Links are Use]full](https://i.stack.imgur.com/rX0tx.jpg?s=48&g=1)
+        ![Styled Links are Usefull](https://i.stack.imgur.com/)rX0tx.jpg?s=48&g=1)
+        """
+        
+        let html = """
+        <img src="https://i.stack.imgur.com/rX0tx.jpg?s=48&g=1" alt="Hello Stranger"/>
+        ![Styled Links are Use]full](https://i.stack.imgur.com/rX0tx.jpg?s=48&g=1)
+        <img src="https://i.stack.imgur.com/" alt="Styled Links are Usefull"/>rX0tx.jpg?s=48&g=1)
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
