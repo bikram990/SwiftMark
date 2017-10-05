@@ -33,8 +33,8 @@ public class Link: Renderer {
     
     public func tokenize(_ strings: [String])throws -> Token {
         let text = try renderer.tokenize(strings[0])
-        let url = try renderer.tokenize(strings[1])
-        let value = text + [TextToken(value: ":break:")] + url
+        let url = Text().tokenize([strings[1]])
+        let value = text + [url]
         return LinkToken(value: value)
     }
     
@@ -47,18 +47,12 @@ public class Link: Renderer {
     }
     
     public func render(_ node: Node)throws -> String {
-        guard case let NodeValue.array(nodes) = node.value else {
+        guard case var NodeValue.array(nodes) = node.value else {
             throw LinkRenderingError.nodeRender
         }
-        let linkData = nodes.split(whereSeparator: { node in
-            guard case let NodeValue.string(split) = node.value else {
-                return false
-            }
-            return split == ":break:"
-        })
-        
-        let text = try self.renderer.render(Array(linkData[0]))
-        let url = try self.renderer.render(Array(linkData[1]))
+
+        let url = try self.renderer.render([nodes.removeLast()])
+        let text = try self.renderer.render(nodes)
         return "<a href=\"\(url)\">\(text)</a>"
     }
     
