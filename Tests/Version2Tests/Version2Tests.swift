@@ -354,6 +354,26 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testSpaceCodeBlock() {
+        let md = """
+            foobar = 1;
+            func baz() -> int {
+                print(foobar.name)
+            }
+            *Not **Rendered***
+        """
+        
+        let html = """
+        <pre><code>foobar = 1;
+        func baz() -> int {
+            print(foobar.name)
+        }
+        *Not **Rendered***</code></pre>
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
