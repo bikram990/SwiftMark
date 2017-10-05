@@ -226,6 +226,20 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testLink() {
+        let md = """
+        [Hello Stranger](https://swift.sandbox.bluemix.net/#/repl)
+        [**Styled** Links are *Usefull_](https://swift.sandbox.bluemix.net/#/repl)
+        """
+        
+        let html = """
+        <a href="https://swift.sandbox.bluemix.net/#/repl">Hello Stranger</a>
+        <a href="https://swift.sandbox.bluemix.net/#/repl"><strong>Styled</strong> Links are <em>Usefull</em></a>
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
