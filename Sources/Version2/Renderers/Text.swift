@@ -35,13 +35,17 @@ public class Text: Renderer {
         return TextToken(value: strings[0])
     }
     
-    public func parse(_ token: Token) -> Node {
-        guard case let TokenValue.string(value) = token.value else { fatalError("[SwiftMark] - Getting token value from TextToken") }
+    public func parse(_ token: Token)throws -> Node {
+        guard case let TokenValue.string(value) = token.value else {
+            throw TextRenderingError.tokenParse
+        }
         return TextNode(value: value)
     }
     
-    public func render(_ node: Node) -> String {
-        guard case let NodeValue.string(value) = node.value else { fatalError("[SwiftMark] - Getting node value from TextNode") }
+    public func render(_ node: Node)throws -> String {
+        guard case let NodeValue.string(value) = node.value else {
+            throw TextRenderingError.nodeRender
+        }
         return value
     }
     
@@ -64,4 +68,9 @@ public class TextNode: Node {
     public init(value: String) {
         self.value = NodeValue.string(value)
     }
+}
+
+public enum TextRenderingError: Error {
+    case tokenParse
+    case nodeRender
 }
