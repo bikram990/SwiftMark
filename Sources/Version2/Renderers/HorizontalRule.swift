@@ -21,7 +21,7 @@
 //SOFTWARE.
 
 public class HorizontalRule: Renderer {
-    public var regex: RegEx = "[^\\s]+"
+    public var regex: RegEx = "\\h{0,3}((_\\h*){3,}|(-\\h*){3,}|(\\*\\h*){3,})"
     public var templates: [String] = []
     public var type: String = "style"
     public var disallowedTags: [String] = []
