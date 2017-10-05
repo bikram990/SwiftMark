@@ -58,6 +58,7 @@ open class Markdown: MarkdownRenderer {
             HeaderSix.self,
             Bold.self,
             Italic.self,
+            Link.self,
             Text.self
         ])
         
