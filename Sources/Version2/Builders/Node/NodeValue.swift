@@ -23,6 +23,9 @@
 /// A node in an AST that contains the data for rendering HTML.
 public indirect enum NodeValue {
     
+    /// No data (i.e. `hr` element).
+    case null
+    
     /// For data that is stored as a String.
     case string(String)
     

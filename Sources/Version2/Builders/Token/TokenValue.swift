@@ -23,6 +23,9 @@
 /// A token containing the data for an HTML element that was taken from Markdown.
 public indirect enum TokenValue {
     
+    /// The token needs no additional data (i.e. `hr` element).
+    case null
+    
     /// The token's data stored as a String.
     case string(String)
     
