@@ -266,7 +266,10 @@ class Version2Tests: XCTestCase {
             ("testHeaderFour", testHeaderFour),
             ("testHeaderFive", testHeaderFive),
             ("testHeaderSix", testHeaderSix),
-            ("testBold", testBold)
+            ("testBold", testBold),
+            ("testItalic", testItalic),
+            ("testLink", testLink),
+            ("testImage", testImage)
         ]
     }
 }
