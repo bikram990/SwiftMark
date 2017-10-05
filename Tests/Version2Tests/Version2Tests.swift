@@ -374,6 +374,32 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testHorizontalRule() {
+        let md = """
+           - -   -
+        ___
+
+         **   *
+
+        __*
+        **_
+        -_*
+        """
+        
+        let html = """
+        <hr/>
+        <hr/>
+
+        <hr/>
+
+        <em>_</em>
+        <em>*</em>
+        <ul><li>_*</li></ul>
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
@@ -391,7 +417,8 @@ class Version2Tests: XCTestCase {
             ("testBlockquote", testBlockquote),
             ("testOrderedList", testOrderedList),
             ("testUnorderedList", testUnorderedList),
-            ("testSpaceCodeBlock", testSpaceCodeBlock)
+            ("testSpaceCodeBlock", testSpaceCodeBlock),
+            ("testHorizontalRule", testHorizontalRule)
         ]
     }
 }
