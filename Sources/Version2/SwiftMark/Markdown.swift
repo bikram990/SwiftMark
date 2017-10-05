@@ -60,6 +60,7 @@ open class Markdown: MarkdownRenderer {
             Italic.self,
             Link.self,
             Image.self,
+            Blockquote.self,
             Text.self
         ])
         
