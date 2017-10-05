@@ -48,8 +48,6 @@ public class Escape: Renderer {
         }
         return value
     }
-    
-    
 }
 
 public class EscapeToken: Token {
