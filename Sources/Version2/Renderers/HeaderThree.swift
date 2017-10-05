@@ -38,7 +38,7 @@ public class HeaderThree: Renderer {
     
     public func parse(_ token: Token)throws -> Node {
         guard case let TokenValue.array(tokens) = token.value else {
-            fatalError("[SwiftMark] - Getting token value from HeaderTwoToken")
+            throw HeaderThreeRenderingError.tokenParse
         }
         let internalNodes = try self.renderer.parse(tokens)
         return HeaderThreeNode(value: internalNodes)
@@ -46,7 +46,7 @@ public class HeaderThree: Renderer {
     
     public func render(_ node: Node)throws -> String {
         guard case let NodeValue.array(nodes) = node.value else {
-            fatalError("[SwiftMark] - Getting token value from HeaderTwoNode")
+            throw HeaderThreeRenderingError.tokenParse
         }
         let internalHTML = try self.renderer.render(nodes)
         return "<h3>\(internalHTML)</h3>"
@@ -71,4 +71,9 @@ public class HeaderThreeNode: Node {
     public init(value: [Node]) {
         self.value = .array(value)
     }
+}
+
+public enum HeaderThreeRenderingError: Error {
+    case tokenParse
+    case nodeRender
 }
