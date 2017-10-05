@@ -210,6 +210,22 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testItalic() {
+        let md = """
+        *This is bold text **here***
+        _ Underscores __also__ work for this_
+        *You can also use both _
+        """
+        
+        let html = """
+        <em>This is bold text <strong>here</strong></em>
+        <em> Underscores <strong>also</strong> work for this</em>
+        <em>You can also use both </em>
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
