@@ -194,6 +194,22 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testBold() {
+        let md = """
+        **This is bold text *here***
+        __ Underscores _also_ work for this__
+        **You can also use both __
+        """
+        
+        let html = """
+        <strong>This is bold text *here*</strong>
+        <strong> Underscores _also_ work for this</strong>
+        <strong>You can also use both </strong>
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
@@ -203,7 +219,8 @@ class Version2Tests: XCTestCase {
             ("testHeaderThree", testHeaderThree),
             ("testHeaderFour", testHeaderFour),
             ("testHeaderFive", testHeaderFive),
-            ("testHeaderSix", testHeaderSix)
+            ("testHeaderSix", testHeaderSix),
+            ("testBold", testBold)
         ]
     }
 }
