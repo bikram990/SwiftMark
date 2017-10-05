@@ -35,16 +35,16 @@ public class Escape: Renderer {
         return EscapeToken(value: strings[0])
     }
     
-    public func parse(_ token: Token) -> Node {
+    public func parse(_ token: Token)throws -> Node {
         guard case let TokenValue.string(value) = token.value else {
-            fatalError("[SwiftMark] - Getting token value from EscapeToken")
+            throw EscapeRenderingError.tokenParse
         }
         return EscapeNode(value: value)
     }
     
-    public func render(_ node: Node) -> String {
+    public func render(_ node: Node)throws -> String {
         guard case let NodeValue.string(value) = node.value else {
-            fatalError("[SwiftMark] - Getting token value from EscapeNode")
+            throw EscapeRenderingError.nodeRender
         }
         return value
     }
@@ -68,4 +68,9 @@ public class EscapeNode: Node {
     public init(value: String) {
         self.value = .string(value)
     }
+}
+
+public enum EscapeRenderingError: Error {
+    case tokenParse
+    case nodeRender
 }
