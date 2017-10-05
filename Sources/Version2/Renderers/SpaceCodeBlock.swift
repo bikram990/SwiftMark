@@ -36,7 +36,7 @@ public class SpaceCodeBlock: Renderer {
     public func tokenize(_ strings: [String])throws -> Token {
         let regexp = try NSRegularExpression(pattern: "^\\h{4}", options: .anchorsMatchLines)
         let value: String = strings[0].split(separator: "\n").map({
-            let codeLine = regexp.stringByReplacingMatches(in: String(describing: $0), range: NSMakeRange(0, $0.utf8.count), withTemplate: "")
+            let codeLine = regexp.stringByReplacingMatches(in: String(describing: $0), options: [], range: NSMakeRange(0, $0.utf8.count), withTemplate: "")
             return codeLine
         }).joined(separator: "\n")
         return SpaceCodeBlockToken(value: value)

@@ -36,7 +36,7 @@ public class UnorderedList: Renderer {
     public func tokenize(_ strings: [String])throws -> Token {
         let regexp = try NSRegularExpression(pattern: "^(\\+|-|\\*)\\s*", options: .anchorsMatchLines)
         let value: [Token] = try strings[0].split(separator: "\n").map({
-            let listItem = regexp.stringByReplacingMatches(in: String(describing: $0), range: NSMakeRange(0, $0.utf8.count), withTemplate: "")
+            let listItem = regexp.stringByReplacingMatches(in: String(describing: $0), options: [], range: NSMakeRange(0, $0.utf8.count), withTemplate: "")
             return try UnorderedListItemToken(value: self.renderer.tokenize(listItem))
         })
         return UnorderedListToken(value: value)
