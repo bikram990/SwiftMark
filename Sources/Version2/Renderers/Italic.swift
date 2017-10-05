@@ -21,7 +21,7 @@
 //SOFTWARE.
 
 public class Italic: Renderer {
-    public var regex: RegEx = "(_{2}|\\*{2})(.+)(_{2}|\\*{2})"
+    public var regex: RegEx = "(_|\\*)(.+)(_|\\*)"
     public var templates: [String] = ["$2"]
     public var type: String = "styling"
     public var disallowedTags: [String] = []
