@@ -202,8 +202,8 @@ class Version2Tests: XCTestCase {
         """
         
         let html = """
-        <strong>This is bold text *here*</strong>
-        <strong> Underscores _also_ work for this</strong>
+        <strong>This is bold text <em>here</em></strong>
+        <strong> Underscores <em>also</em> work for this</strong>
         <strong>You can also use both </strong>
         """
         
