@@ -63,6 +63,7 @@ open class Markdown: MarkdownRenderer {
             Blockquote.self,
             OrderedList.self,
             UnorderedList.self,
+            BacktickCodeBlock.self,
             Text.self
         ])
         
