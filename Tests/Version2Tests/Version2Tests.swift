@@ -256,6 +256,36 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testBlockquote() {
+        let md = """
+        > This is a *blockquote*
+        > \\- Caleb Kleveter
+        
+        Paragraph goes here
+        
+        > Mumpaly bumps are a
+        > fictitious disease that was invented
+        > For the purpose of giving young
+        > children a good time.
+        > \\- Bad Speller
+        """
+        
+        let html = """
+        <blockquote>This is a <em>blockquote</em>
+        - Caleb Kleveter
+        </blockquote>
+        Paragraph goes here
+
+        <blockquote>Mumpaly bumps are a
+        fictitious disease that was invented
+        For the purpose of giving young
+        children a good time.
+        - Bad Speller</blockquote>
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
@@ -269,7 +299,8 @@ class Version2Tests: XCTestCase {
             ("testBold", testBold),
             ("testItalic", testItalic),
             ("testLink", testLink),
-            ("testImage", testImage)
+            ("testImage", testImage),
+            ("testBlockquote", testBlockquote)
         ]
     }
 }
