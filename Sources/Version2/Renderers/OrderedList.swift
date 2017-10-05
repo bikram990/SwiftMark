@@ -65,30 +65,13 @@ public class OrderedList: Renderer {
         return "<ol>\(listItems.joined(separator: "\n"))</ol>"
     }
     
+    // MARK: - Private Methods
     private func renderListItem(_ item: OrderedListItemNode)throws -> String {
         guard case let NodeValue.array(nodes) = item.value else {
             throw OrderedListRenderingError.nodeRender
         }
         let text = try self.renderer.render(nodes)
         return "<li>\(text)</li>"
-    }
-}
-
-public class OrderedListItemToken: Token {
-    public var renderer: Renderer.Type = OrderedList.self
-    public var value: TokenValue
-    
-    public init(value: [Token]) {
-        self.value = .array(value)
-    }
-}
-
-public class OrderedListItemNode: Node {
-    public var renderer: Renderer.Type = OrderedList.self
-    public var value: NodeValue
-    
-    public init(value: [Node]) {
-        self.value = .array(value)
     }
 }
 
@@ -115,3 +98,21 @@ public enum OrderedListRenderingError: Error {
     case nodeRender
 }
 
+// MARK: - Ordered List Items
+fileprivate class OrderedListItemToken: Token {
+    fileprivate var renderer: Renderer.Type = OrderedList.self
+    fileprivate var value: TokenValue
+    
+    fileprivate init(value: [Token]) {
+        self.value = .array(value)
+    }
+}
+
+fileprivate class OrderedListItemNode: Node {
+    fileprivate var renderer: Renderer.Type = OrderedList.self
+    fileprivate var value: NodeValue
+    
+    fileprivate init(value: [Node]) {
+        self.value = .array(value)
+    }
+}
