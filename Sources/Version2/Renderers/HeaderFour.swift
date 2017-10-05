@@ -38,7 +38,7 @@ public class HeaderFour: Renderer {
     
     public func parse(_ token: Token)throws -> Node {
         guard case let TokenValue.array(tokens) = token.value else {
-            fatalError("[SwiftMark] - Getting token value from HeaderFourToken")
+            throw HeaderFourRenderingError.tokenParse
         }
         let internalNodes = try self.renderer.parse(tokens)
         return HeaderFourNode(value: internalNodes)
@@ -46,7 +46,7 @@ public class HeaderFour: Renderer {
     
     public func render(_ node: Node)throws -> String {
         guard case let NodeValue.array(nodes) = node.value else {
-            fatalError("[SwiftMark] - Getting token value from HeaderFourNode")
+            throw HeaderFourRenderingError.nodeRender
         }
         let internalHTML = try self.renderer.render(nodes)
         return "<h4>\(internalHTML)</h4>"
@@ -71,4 +71,9 @@ public class HeaderFourNode: Node {
     public init(value: [Node]) {
         self.value = .array(value)
     }
+}
+
+public enum HeaderFourRenderingError: Error {
+    case tokenParse
+    case nodeRender
 }
