@@ -46,7 +46,7 @@ public class BacktickCodeBlock: Renderer {
         guard case let NodeValue.string(value) = node.value else {
             throw BacktickCodeBlockRenderingError.nodeRender
         }
-        return value
+        return "<pre><code>\(value)</code></pre>"
     }
     
     
