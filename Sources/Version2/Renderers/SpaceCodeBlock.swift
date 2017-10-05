@@ -35,43 +35,25 @@ public class SpaceCodeBlock: Renderer {
     
     public func tokenize(_ strings: [String])throws -> Token {
         let regexp = try NSRegularExpression(pattern: "^\\h{4}", options: .anchorsMatchLines)
-        let value: [Token] = try strings[0].split(separator: "\n").map({
-            let listItem = regexp.stringByReplacingMatches(in: String(describing: $0), range: NSMakeRange(0, $0.utf8.count), withTemplate: "")
-            return try SpaceCodeBlockLineToken(value: self.renderer.tokenize(listItem))
-        })
+        let value: String = strings[0].split(separator: "\n").map({
+            let codeLine = regexp.stringByReplacingMatches(in: String(describing: $0), range: NSMakeRange(0, $0.utf8.count), withTemplate: "")
+            return codeLine
+        }).joined(separator: "\n")
         return SpaceCodeBlockToken(value: value)
     }
     
     public func parse(_ token: Token)throws -> Node {
-        guard case let TokenValue.array(tokens) = token.value else {
+        guard case let TokenValue.string(value) = token.value else {
             throw SpaceCodeBlockRenderingError.tokenParse
         }
-        let nodes = try tokens.map({ (token)throws -> Node in
-            guard case let TokenValue.array(subTokens) = token.value else {
-                throw SpaceCodeBlockRenderingError.tokenParse
-            }
-            return SpaceCodeBlockLineNode(value: try self.renderer.parse(subTokens))
-        })
-        return SpaceCodeBlockNode(value: nodes)
+        return SpaceCodeBlockNode(value: value)
     }
     
     public func render(_ node: Node)throws -> String {
-        guard case let NodeValue.array(nodes) = node.value else {
+        guard case let NodeValue.string(code) = node.value else {
             throw SpaceCodeBlockRenderingError.nodeRender
         }
-        let listItems = try nodes.map({ node in
-            return try self.renderCodeLine(node as! SpaceCodeBlockLineNode)
-        })
-        return "<pre><code>\(listItems.joined(separator: "\n"))</code></pre>"
-    }
-    
-    // MARK: - Private Methods
-    private func renderCodeLine(_ item: SpaceCodeBlockLineNode)throws -> String {
-        guard case let NodeValue.array(nodes) = item.value else {
-            throw SpaceCodeBlockRenderingError.nodeRender
-        }
-        let text = try self.renderer.render(nodes)
-        return text
+        return "<pre><code>\(code)</code></pre>"
     }
 }
 
@@ -79,8 +61,8 @@ public class SpaceCodeBlockToken: Token {
     public var renderer: Renderer.Type = SpaceCodeBlock.self
     public var value: TokenValue
     
-    public init(value: [Token]) {
-        self.value = .array(value)
+    public init(value: String) {
+        self.value = .string(value)
     }
 }
 
@@ -88,31 +70,12 @@ public class SpaceCodeBlockNode: Node {
     public var renderer: Renderer.Type = SpaceCodeBlock.self
     public var value: NodeValue
     
-    public init(value: [Node]) {
-        self.value = .array(value)
+    public init(value: String) {
+        self.value = .string(value)
     }
 }
 
 public enum SpaceCodeBlockRenderingError: Error {
     case tokenParse
     case nodeRender
-}
-
-// MARK: - Ordered List Items
-fileprivate class SpaceCodeBlockLineToken: Token {
-    fileprivate var renderer: Renderer.Type = SpaceCodeBlock.self
-    fileprivate var value: TokenValue
-    
-    fileprivate init(value: [Token]) {
-        self.value = .array(value)
-    }
-}
-
-fileprivate class SpaceCodeBlockLineNode: Node {
-    fileprivate var renderer: Renderer.Type = SpaceCodeBlock.self
-    fileprivate var value: NodeValue
-    
-    fileprivate init(value: [Node]) {
-        self.value = .array(value)
-    }
 }
