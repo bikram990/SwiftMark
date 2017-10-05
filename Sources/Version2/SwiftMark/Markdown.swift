@@ -56,6 +56,7 @@ open class Markdown: MarkdownRenderer {
             HeaderFour.self,
             HeaderFive.self,
             HeaderSix.self,
+            HorizontalRule.self,
             Bold.self,
             Italic.self,
             Link.self,
@@ -65,7 +66,6 @@ open class Markdown: MarkdownRenderer {
             UnorderedList.self,
             BacktickCodeBlock.self,
             SpaceCodeBlock.self,
-            HorizontalRule.self,
             Text.self
         ])
         
