@@ -23,7 +23,7 @@
 import Foundation
 
 public class OrderedList: Renderer {
-    public var regex: RegEx = "(?:>\\h*(?:.+)\\n?)+"
+    public var regex: RegEx = "(?:\\d+\\.\\h*(?:.+)\\n?)+"
     public var templates: [String] = ["$0"]
     public var type: String = "list"
     public var disallowedTags: [String] = ["header"]
