@@ -36,19 +36,19 @@ public class HeaderFour: Renderer {
         return HeaderFourToken(value: internalTokens)
     }
     
-    public func parse(_ token: Token) -> Node {
+    public func parse(_ token: Token)throws -> Node {
         guard case let TokenValue.array(tokens) = token.value else {
             fatalError("[SwiftMark] - Getting token value from HeaderFourToken")
         }
-        let internalNodes = self.renderer.parse(tokens)
+        let internalNodes = try self.renderer.parse(tokens)
         return HeaderFourNode(value: internalNodes)
     }
     
-    public func render(_ node: Node) -> String {
+    public func render(_ node: Node)throws -> String {
         guard case let NodeValue.array(nodes) = node.value else {
             fatalError("[SwiftMark] - Getting token value from HeaderFourNode")
         }
-        let internalHTML = self.renderer.render(nodes)
+        let internalHTML = try self.renderer.render(nodes)
         return "<h4>\(internalHTML)</h4>"
     }
     

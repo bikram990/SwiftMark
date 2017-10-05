@@ -94,16 +94,16 @@ open class Markdown: MarkdownRenderer {
     ///
     /// - Parameter tokens: The Tokens to parse.
     /// - Returns: An AST containing the data held in the Tokens passed in.
-    public func parse(_ tokens: [Token]) -> [Node] {
-        return tokens.map { token in token.renderer.init().parse(token) }
+    public func parse(_ tokens: [Token])throws -> [Node] {
+        return try tokens.map { token in try token.renderer.init().parse(token) }
     }
     
     /// Renders HTML from an AST (array of Nodes).
     ///
     /// - Parameter nodes: The Nodes to render.
     /// - Returns: The HTML with the data from the Nodes passed in.
-    public func render(_ nodes: [Node]) -> String {
-        return nodes.map({ node in node.renderer.init().render(node) }).joined()
+    public func render(_ nodes: [Node])throws -> String {
+        return try nodes.map({ node in try node.renderer.init().render(node) }).joined()
     }
     
     /// Renders a block of Markdown to HTML.
@@ -112,7 +112,7 @@ open class Markdown: MarkdownRenderer {
     /// - Returns: The HTML equivalent of the Markdown passed in.
     public func render(_ string: String)throws -> String {
         let tokens = try tokenize(string)
-        let nodes = parse(tokens)
-        return render(nodes)
+        let nodes = try parse(tokens)
+        return try render(nodes)
     }
 }
