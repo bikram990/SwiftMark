@@ -400,6 +400,22 @@ class Version2Tests: XCTestCase {
         XCTAssertEqual(try markdown.render(md), html)
     }
     
+    func testInlineCode() {
+        let md = """
+        `var foobar = 1` and `let baz = true` should help you out.
+        
+        `This syntax _does not_ sub-render`.
+        """
+        
+        let html = """
+        <code>var foobar = 1</code> and <code>let baz = true</code> should help you out.
+        
+        <code>This syntax _does not_ sub-render</code>.
+        """
+        
+        XCTAssertEqual(try markdown.render(md), html)
+    }
+    
     static var allTests : [(String, (Version2Tests) -> () throws -> Void)] {
         return [
             ("testText", testText),
@@ -418,7 +434,8 @@ class Version2Tests: XCTestCase {
             ("testOrderedList", testOrderedList),
             ("testUnorderedList", testUnorderedList),
             ("testSpaceCodeBlock", testSpaceCodeBlock),
-            ("testHorizontalRule", testHorizontalRule)
+            ("testHorizontalRule", testHorizontalRule),
+            ("testInlineCode", testInlineCode)
         ]
     }
 }
